@@ -109,7 +109,7 @@ jobs:
         if: matrix.target == 'loongarch64-unknown-linux-gnu'
         run: |
           sudo apt-get update
-          sudo apt-get install -y gcc-loongarch64-linux-gnu g++-loongarch64-linux-gnu
+          sudo apt-get install -y gcc-14-loongarch64-linux-gnu g++-14-loongarch64-linux-gnu
 
       - name: Build release
         uses: michaelklishin/rust-build-package-release-action@v3
@@ -124,10 +124,10 @@ jobs:
           include: 'README.md,LICENSE-MIT,LICENSE-APACHE'
           no-default-features: ${{ matrix.no_default_features || 'false' }}
         env:
-          CARGO_TARGET_LOONGARCH64_UNKNOWN_LINUX_GNU_LINKER: loongarch64-linux-gnu-gcc
-          CC_loongarch64_unknown_linux_gnu: loongarch64-linux-gnu-gcc
-          CXX_loongarch64_unknown_linux_gnu: loongarch64-linux-gnu-g++
-          AR_loongarch64_unknown_linux_gnu: loongarch64-linux-gnu-ar
+          CARGO_TARGET_LOONGARCH64_UNKNOWN_LINUX_GNU_LINKER: loongarch64-linux-gnu-gcc-14
+          CC_loongarch64_unknown_linux_gnu: loongarch64-linux-gnu-gcc-14
+          CXX_loongarch64_unknown_linux_gnu: loongarch64-linux-gnu-g++-14
+          AR_loongarch64_unknown_linux_gnu: loongarch64-linux-gnu-gcc-ar-14
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v7
